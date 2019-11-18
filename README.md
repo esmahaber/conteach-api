@@ -1,15 +1,15 @@
 # conteach-api
-<<<<<<< HEAD
+
 NodeJS-conteach API
 =======
 | Route | HTTP Verb | POST body | Description |
 | --- | --- | --- | --- |
 | /api/kullanicilar | `GET` | Empty | Tüm kullanıcıları listeyin |
 | /api/kullanicilar | `POST` | {'ogr_no':' ', 'k_id':'' , 'isim':' ', 'soyisim':'', eposta: '', sifre:'', dogum_tarihi:'', telefon:'', kayit_tarihi:2019-10-11 } | Bir yeni kullanici oluşturun. |
-| /api/kullanicilar/:k_id | `GET` | Boş | Kullaniciyi görüntüleyin |
+| /api/kullanicilar/:k_id | `GET` | Empty | Kullanıcıyı görüntüleyin |
 | /api/kullanicilar/:k_id | `PUT` | {'isim':'foo', 'soyisim':'bar'} | Kişiyi yeni bilgilerle güncelleyin. |
-| /api/kullanicilar/:k_id | `DELETE` | Boş | Kullaniciyi silin. |
-| /api/kullanicilar/no_baslangic/:baslangic_no | `GET` | Empty | Kullaniciyi öğrenci numarasına göre sınırlandırın. |
+| /api/kullanicilar/:k_id | `DELETE` | Empty | Kullanıcıyı silin. |
+| /api/kullanicilar/kisitla/:baslangic_no | `GET` | Empty | Kullanıcıyı öğrenci numarasına göre sınırlandırın. |
  
 # Randevular
  
@@ -20,7 +20,8 @@ NodeJS-conteach API
 | /api/randevular/:randevu_id | `GET` | Empty | Randevuyu görüntüleyin. |
 | /api/randevular/:randevu_id | `PUT` | {'name':'foo', 'surname':'bar', 'bio': 'lorem'} | Randevuyu yeni bilgilerle güncelleyin. |
 | /api/randevular/:randevu_id | `DELETE` | Empty | Randevuyu silin. |
-| /api/randevular/:randevu_id/ilk10randevu | `GET` | Empty | İlk 10 randevuyu görüntüleyin. |
+| /api/randevular/kisitla/ilk10 | `GET` | Empty | En yakın 10 randevuyu görüntüleyin. |
+| /api/randevular/kisitla//kisitla/:baslangic/:bitis | `GET` | Empty | İstenilen aralıkta randevuyu görüntüleyin. |
  
 # Index
  
