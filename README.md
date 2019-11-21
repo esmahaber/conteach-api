@@ -27,6 +27,6 @@ NodeJS-conteach API
  
 | Route | HTTP Verb | POST body | Description |
 | --- | --- | --- | --- |
-| /kayit_ol | `POST` | { username: 'foo', password:'1234' } | Yeni kayit oluştur. |
+| /kayitol | `POST` | { username: 'foo', password:'1234' } | Yeni kayit oluştur. |
 | /dogrulama | `POST` | { username: 'foo', password:'1234' } | Doğrulama oluşturun. |
 >>>>>>> readme file endpoint table
