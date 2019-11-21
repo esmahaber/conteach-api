@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var zaman = require('../helper/date');
+const {check, validationResult} = require('express-validator/check');
 
 
 // GET tüm randevular
@@ -21,9 +22,9 @@ router.get('/ilk10', (req, res, next) => {
     req.getConnection((err, connection) => {
         if (err)
             return next(err);
-        connection.query('SELECT * FROM randevu ORDER BY randevu_tarihi ASC LIMIT 10', (err, results) => {
+        connection.query('SELECT * FROM randevu ORDER BY randevu_tarihi ASC LIMIT 10', (err, rows) => {
             if (err) return next(err);
-            res.send(results);
+            res.send(rows);
         });
     });
 });
@@ -37,7 +38,7 @@ router.get('/:id', (req, res, next) => {
             if (!err)
                 res.send(rows);
             else
-                console.log(err);
+                res.send(err);
         })
     });
 });
@@ -53,25 +54,26 @@ router.get('/kisitla/:baslangic/:bitis', (req, res, next) => {
             if (!err)
                 res.send(rows);
             else
-                console.log(err);
+                res.send(err);
         })
     });
 });
 
 //POST tek randevu
-router.post('/', (req, res, next) => {
-    var postData = req.body;
-    req.getConnection((err, connection) => {
-        if (err)
-            return next(err);
-        connection.query('INSERT INTO randevu SET ? ', postData, (err, rows, fields) => {
-            if (!err)
-                res.send(req.body);
-            else
-                res.send(err);
-        })
+router.post('/',
+    (req, res, next) => {
+        var postData = req.body;
+        req.getConnection((err, connection) => {
+            if (err)
+                return next(err);
+            connection.query('INSERT INTO randevu SET ? ', postData, (err, rows, fields) => {
+                if (!err)
+                    res.send(req.body);
+                else
+                    res.send(err);
+            })
+        });
     });
-});
 
 //DELETE tek randevu
 router.delete('/:id', (req, res, next) => {
@@ -79,10 +81,10 @@ router.delete('/:id', (req, res, next) => {
         if (err)
             return next(err);
         connection.query('DELETE FROM randevu WHERE randevu_id = ?', [req.params.id], (err, rows, fields) => {
-            if (!err)
-                res.send('Randevu silme işlemi başarılı');
+            if (rows.affectedRows == 0)
+                return res.send("Randevu bulunamadı");
             else
-                console.log(err);
+                res.send("Randevu silindi");
         })
     });
 });
