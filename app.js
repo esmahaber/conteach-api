@@ -10,9 +10,7 @@ const randevular = require('./routes/randevular');
 
 const app = express();
 
-//db bağlantısı
-//var db = require('./db');
-
+//db connection
 var mysql = require('mysql'), // node-mysql module
     myConnection = require('express-myconnection'), // express-myconnection module
     dbOptions = {
@@ -25,6 +23,10 @@ var mysql = require('mysql'), // node-mysql module
     };
 
 app.use(myConnection(mysql, dbOptions, 'single'));
+
+// Config
+const config = require('./config');
+app.set('api_secret_key', config.api_secret_key);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
