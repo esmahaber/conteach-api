@@ -10,8 +10,11 @@ const randevular = require('./routes/randevular');
 
 const app = express();
 
+//Middleware
+const verifyToken = require('./middleware/verify-token');
+
 //db connection
-var mysql = require('mysql'), // node-mysql module
+const mysql = require('mysql'), // node-mysql module
     myConnection = require('express-myconnection'), // express-myconnection module
     dbOptions = {
       host: 'localhost',
@@ -39,6 +42,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/api', verifyToken);
 app.use('/api/kullanicilar', kullanicilar);
 app.use('/api/randevular', randevular);
 
