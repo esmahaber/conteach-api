@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var zaman = require('../helper/date');
-const {check, validationResult} = require('express-validator/check');
+const {check, validationResult} = require('express-validator');
 var bcrypt = require('bcryptjs');
 
 
