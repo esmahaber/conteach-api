@@ -61,5 +61,5 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.json({ error: err.message });
 });
-app.listen(3000, () => console.log('Express server 3000 portu ile çalışıyor.'));
+app.listen(3000);
 module.exports = app;
