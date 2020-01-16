@@ -80,22 +80,12 @@ router.post('/', [
                     const errors = validationResult(req);
                     if (!errors.isEmpty()) {
                         return res.status(422).jsonp(errors.array());
-                        // next({message: 'isim gir', code: 444});
                     } else if (err)
                         res.send(err);
                     else
-                        res.send(req.body);
+                        res.send(rows);
                 });
 
-
-
-
-                /* if (!err)
-                     res.send(req.body);
-                 else
-                     res.send(err);
-
-                 */
             })
 
         });
@@ -105,11 +95,11 @@ router.post('/', [
 //DELETE tek kullanıcı
 router.delete('/:id', (req, res, next) => {
     req.getConnection((err, connection) => {
-        if (err)
-            return next(err);
+        
         connection.query('DELETE FROM kullanici WHERE k_id = ?', [req.params.id], (err, rows, fields) => {
-            if (rows.affectedRows == 0)
-                return res.send("Kullanici bulunamadı");
+            if (rows.affectedRows === 0)
+                res.send("Kullanici bulunamadı");        
+                
             else
                 res.send(req.params.id + " idli kullanıcı silindi");
         })
@@ -133,5 +123,3 @@ router.put('/:id', (req, res, next) => {
 
 
 module.exports = router;
-
-
