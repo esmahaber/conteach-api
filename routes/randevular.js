@@ -68,7 +68,7 @@ router.post('/',
                 return next(err);
             connection.query('INSERT INTO randevu SET ? ', postData, (err, rows, fields) => {
                 if (!err)
-                    res.send(req.body);
+                    res.send(rows);
                 else
                     res.send(err);
             })
@@ -90,13 +90,13 @@ router.delete('/:id', (req, res, next) => {
 });
 
 //PUT randevu
-router.put('/', (req, res, next) => {
+router.put('/:id', (req, res, next) => {
     var putData = req.body;
     req.getConnection((err, connection) => {
         if (err)
             return next(err);
         connection.query('UPDATE randevu SET randevu_tarihi = ?, kullanici_notu = ?, guncelleme_tarihi = ?, k_id=? WHERE randevu_id = ?',
-            [putData.randevu_tarihi, putData.kullanici_notu, zaman, putData.k_id, putData.randevu_id], (err, rows, fields) => {
+            [putData.randevu_tarihi, putData.kullanici_notu, zaman, putData.k_id, req.params.id], (err, rows, fields) => {
 
                 if (!err)
                     res.send(req.body);
