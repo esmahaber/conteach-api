@@ -5,7 +5,7 @@ services:
   - mysql
 before_install:
   - npm install
+  - mysql -u root --password="1234" < test/travis.sql
   - export NODE_ENV=production
-  - mysql -u root --password="" < test/travis.sql
 script:
   - npm run test
