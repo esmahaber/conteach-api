@@ -5,7 +5,7 @@ var jwt = require('jsonwebtoken');
 
 /* GET users listing. */
 router.get('/', (req, res, next) => {
-    res.send('respond with a resource');
+    res.send('index',{ title: 'Express'});
 });
 
 router.post('/dogrulama', function (req, res, next) {
