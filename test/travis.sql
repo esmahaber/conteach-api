@@ -24,8 +24,7 @@ CREATE TABLE IF NOT EXISTS `randevu` (
 `olusturma_tarihi` date,
 `randevu_tarihi` date,
 `guncelleme_tarihi` date,
-`kullanici_notu` varchar(250),
-PRIMARY KEY (randevu_id)
+`kullanici_notu` varchar(250)
 ) ENGINE=InnoDB;
 
 ALTER TABLE `randevu` 
@@ -39,4 +38,4 @@ ALTER TABLE `kullanici`
 INSERT INTO kullanici (isim,soyisim,eposta,dogum_tarihi,sifre, ogr_no, telefon) 
 VALUES ("Travis","Test","travistest@hotmail.com","1998-05-05", "1234","1587452058","1111111111");
 INSERT INTO randevu (randevu_tarihi,kullanici_notu) 
-VALUES ("2020-19-01","Odev Kontrol");
+VALUES ("2020-05-01","Odev Kontrol");
