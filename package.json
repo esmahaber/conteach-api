@@ -24,7 +24,5 @@
     "chai-http": "^4.3.0",
     "mocha": "^6.2.2"
   },
-  "devDependencies": {
-    
-  }
+  "devDependencies": {}
 }
