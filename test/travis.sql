@@ -5,6 +5,7 @@ GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON *.* TO 'dev'@'localhost';
 CREATE DATABASE IF NOT EXISTS `rezervasyon` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `rezervasyon`;
 
+# Create Table
 CREATE TABLE IF NOT EXISTS `kullanici` (
 `k_id` INT UNIQUE NOT NULL AUTO_INCREMENT,
 `isim` varchar(25),
@@ -15,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `kullanici` (
 `sifre` varchar(25),
 `ogr_no` int,
 `telefon` int
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `randevu` (
 `randevu_id` INT UNIQUE NOT NULL AUTO_INCREMENT,
@@ -25,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `randevu` (
 `randevu_tarihi` date,
 `guncelleme_tarihi` date,
 `kullanici_notu` varchar(250)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE `randevu` 
   ADD FOREIGN KEY (`k_id`) REFERENCES `kullanici` (`k_id`);
